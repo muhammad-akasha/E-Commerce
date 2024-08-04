@@ -1,0 +1,52 @@
+body {
+  background-image: url("https://img.freepik.com/free-vector/gradient-abstract-background_23-2149101391.jpg");
+  background-size: cover;
+}
+.signin-container {
+  width: 35%;
+  padding: 50px;
+  margin: 100px auto;
+  border-radius: 30px;
+  backdrop-filter: blur(30px);
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+.heading {
+  font-size: 36px;
+  padding: 10px 0px 30px;
+  font-weight: 800;
+  text-align: center;
+  color: #fff;
+}
+.signup-mess {
+  text-align: center;
+  margin-top: 30px;
+}
+.signup-mess span {
+  font-weight: 700;
+  color: #fff;
+}
+
+.signup {
+  color: rgb(0, 153, 255);
+  font-weight: 700;
+  margin-left: 5px;
+}
+.icons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+.icons div {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.icons i {
+  font-size: 18px;
+  color: #fff;
+}
