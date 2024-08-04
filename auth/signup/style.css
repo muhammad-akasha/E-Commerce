@@ -1,0 +1,37 @@
+body {
+  background-image: url("https://img.freepik.com/free-vector/realistic-polygonal-background_23-2148915115.jpg?w=826&t=st=1722771110~exp=1722771710~hmac=d094890f42f9f92ab7e700fb72d3c147d7fc5dfa74b7e0ff2546b9cf4a6642dd");
+  background-size: cover;
+}
+.heading {
+  font-size: 40px;
+  text-align: center;
+  color: rgb(230, 230, 230);
+  font-weight: 800;
+  padding: 0px 0px 50px;
+}
+.form-container {
+  width: 35%;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+  margin: 80px auto 0px;
+  padding: 50px;
+  border-radius: 30px;
+  backdrop-filter: blur(30px);
+}
+.signin-mess {
+  text-align: center;
+  margin-top: 30px;
+}
+.signin-mess span {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.signin-mess a {
+  color: rgb(53, 93, 204);
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: capitalize;
+  margin-left: 5px;
+}
