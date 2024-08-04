@@ -1,0 +1,15 @@
+.navbar {
+  padding: 20px 10px;
+  background: #000;
+  color: #fff;
+}
+.nav-links ul {
+  background: #000 !important;
+}
+.nav-links li a {
+  color: #fff !important;
+}
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
