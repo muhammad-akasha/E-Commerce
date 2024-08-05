@@ -1,9 +1,6 @@
 import {
-  app,
   auth,
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
 } from "../../firebase/firebase.js";
 
 let signUpForm = document.getElementById("sign-up-form");
@@ -11,21 +8,27 @@ let signUpForm = document.getElementById("sign-up-form");
 signUpForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   console.log(e);
-  let email = e.target[0].value;
-  let password = e.target[1].value;
-  let firstName = e.target[3].value;
-  let lastName = e.target[4].value;
-  // console.log(email, password, firstName, lastName);
+
+  // Use e.target.elements to access form fields safely
+  const email = e.target.elements.email.value;
+  const password = e.target.elements.password.value;
+  const firstName = e.target.elements.first_name.value;
+  const lastName = e.target.elements.last_name.value;
+
+  if (!email || !password) {
+    return alert("Please add email and password");
+  }
 
   try {
-    let createUser = await createUserWithEmailAndPassword(
+    const createUser = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
-    console.log("create account successfull", createUser);
+    console.log("Account creation successful", createUser);
+    window.location.replace("../../index.html");
   } catch (error) {
-    alert(error);
-    // console.log(error);
+    console.error("Error creating account:", error.message);
+    alert("An error occurred: " + error.message);
   }
 });
