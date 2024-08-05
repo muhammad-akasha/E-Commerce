@@ -48,10 +48,7 @@ googleAuth.addEventListener("click", () => {
       const email = error.customData.email;
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
-      console.log(errorCode);
       console.log(errorMessage);
-      console.log(email);
-      console.log(credential);
     });
 });
 
@@ -64,6 +61,7 @@ fbAuth.addEventListener("click", () => {
 
       // The signed-in user info.
       const user = result.user;
+      console.log(user);
       window.location.replace("./../../index.html");
     })
     .catch((error) => {
@@ -74,10 +72,8 @@ fbAuth.addEventListener("click", () => {
       const email = error.customData.email;
       // The AuthCredential type that was used.
       const credential = FacebookAuthProvider.credentialFromError(error);
-      console.log(errorCode);
+
       console.log(errorMessage);
-      console.log(email);
-      console.log(credential);
     });
 });
 
@@ -87,9 +83,9 @@ githubAuth.addEventListener("click", () => {
       // This gives you a GitHub Access Token. You can use it to access the GitHub API.
       const credential = GithubAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
-
       // The signed-in user info.
       const user = result.user;
+      console.log(user);
       window.location.replace("./../../index.html");
     })
     .catch((error) => {
@@ -100,9 +96,9 @@ githubAuth.addEventListener("click", () => {
       const email = error.customData.email;
       // The AuthCredential type that was used.
       const credential = GithubAuthProvider.credentialFromError(error);
-      console.log(errorCode);
-      console.log(errorMessage);
-      console.log(email);
-      console.log(credential);
+      console.error(`GitHub Auth Error: ${errorCode} - ${errorMessage}`);
+      if (credential) {
+        console.error(`Credential: ${credential}`);
+      }
     });
 });

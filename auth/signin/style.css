@@ -3,12 +3,15 @@ body {
   background-size: cover;
 }
 .signin-container {
-  width: 35%;
+  width: 420px;
   padding: 50px;
-  margin: 100px auto;
+  margin: 50px auto;
   border-radius: 30px;
   backdrop-filter: blur(30px);
   box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+.signin-container label {
+  color: #fff;
 }
 .heading {
   font-size: 36px;
@@ -26,13 +29,22 @@ body {
   color: #fff;
 }
 
+.another-signup {
+  text-align: center;
+  font-size: 17px;
+  color: #fff;
+  margin-top: 20px;
+  font-weight: 500;
+}
+
 .signup {
   color: rgb(0, 153, 255);
   font-weight: 700;
   margin-left: 5px;
+  font-size: 22px;
 }
 .icons {
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   gap: 15px;
@@ -49,4 +61,10 @@ body {
 .icons i {
   font-size: 18px;
   color: #fff;
+}
+
+@media (max-width: 500px) {
+  .signin-container {
+    width: 85%;
+  }
 }
