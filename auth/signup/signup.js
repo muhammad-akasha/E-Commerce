@@ -22,6 +22,7 @@ signUpForm.addEventListener("submit", async (e) => {
   const password = e.target.elements.password.value;
   const firstName = e.target.elements.first_name.value;
   const lastName = e.target.elements.last_name.value;
+  const btn = document.getElementById("btn-signup");
   console.log(profilePic.files[0]);
 
   if (
@@ -33,6 +34,8 @@ signUpForm.addEventListener("submit", async (e) => {
   ) {
     return alert("All the fields are required");
   }
+  btn.setAttribute("disabled", true);
+  btn.classList.add("flex-class");
   const storage = getStorage();
   const storageRef = ref(storage, `images/${profilePic.files[0].name}`);
   try {
@@ -41,7 +44,6 @@ signUpForm.addEventListener("submit", async (e) => {
       email,
       password
     );
-
     const uploadImg = await uploadBytes(storageRef, profilePic.files[0]);
     console.log(uploadImg);
     const imgUrl = await getDownloadURL(ref(storageRef));
@@ -63,10 +65,12 @@ signUpForm.addEventListener("submit", async (e) => {
     console.log("Document written with ID: ", docRef.id);
     console.log(docRef);
     console.log("Account creation successful", createUser);
-    loader.classList.add("none");
     window.location.replace("../../index.html");
   } catch (error) {
     console.error("Error creating account:", error.message);
     alert("An error occurred: " + error.message);
   }
+  loader.classList.add("none");
+  btn.removeAttribute("disabled");
+  btn.classList.remove("flex-class");
 });

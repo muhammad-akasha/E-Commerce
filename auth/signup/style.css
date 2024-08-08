@@ -1,5 +1,5 @@
 body {
-  background-image: url("https://img.freepik.com/free-vector/realistic-polygonal-background_23-2148915115.jpg?w=826&t=st=1722771110~exp=1722771710~hmac=d094890f42f9f92ab7e700fb72d3c147d7fc5dfa74b7e0ff2546b9cf4a6642dd");
+  background-image: url("./bgsignup.avif");
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -42,6 +42,20 @@ body {
   font-weight: 800;
   text-transform: capitalize;
   margin-left: 5px;
+}
+.flex-class {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0px 10px 10px;
+  background: #726969;
+  color: #000;
+  cursor: no-drop;
+}
+.spin-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 500px) {
