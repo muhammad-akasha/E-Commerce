@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+h1 {
+  font-size: 20px;
+  text-align: start;
+  margin: 0;
+}
+.p-detail {
+  text-align: center;
+  padding-bottom: 40px;
+  font-size: 33px;
+  font-weight: 600;
+}
+.product-container {
+  background: #f7f7f7;
+  padding: 70px 70px 20px;
+}
+.product-div {
+  width: 100%;
+  display: flex;
+  gap: 70px;
+  align-items: flex-start;
+}
+
+.details-div {
+  width: 100%;
+}
+
+.product-div img {
+  width: 40%;
+  height: 500px;
+}
+h3 {
+  font-size: 17px;
+  font-weight: 100;
+}
+h1,
+h3 {
+  padding: 15px 0px;
+}
+.category {
+  font-size: 19px;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+.condition {
+  letter-spacing: 3px;
+  font-size: 17px;
+  font-weight: 500;
+}
+.description {
+  font-size: 15px;
+}
+.descrip-strong {
+  font-size: 22px;
+  position: relative;
+  top: -10px;
+}
+p {
+  font-size: 20px;
+  letter-spacing: 2px;
+  padding: 30px 0px 30px;
+}
+.price {
+  font-size: 17px;
+  letter-spacing: 2px;
+}
+
+.user-details {
+  padding: 15px 0px;
+  margin: 50px;
+}
+.user-details h5 {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 600;
+  padding: 20px 0px;
+}
+.created-by {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  text-transform: capitalize;
+}
+
+.created-by img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 10px #000;
+}
