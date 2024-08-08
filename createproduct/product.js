@@ -1,38 +1,64 @@
 import {
   addDoc,
-  setDoc,
   collection,
-  doc,
   db,
   auth,
   onAuthStateChanged,
   uploadBytes,
   getDownloadURL,
   getStorage,
-  ref
+  ref,
 } from "../firebase/firebase.js";
 
 let createForm = document.getElementById("create-form");
+let loader = document.querySelector(".spin");
 const storage = getStorage();
 
 let uid;
+let userName;
+let userPic;
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    uid = user.uid;
+    userName = user.displayName;
+    userPic = user.photoURL;
+    console.log("log in");
+  } else {
+    console.log("logout");
+  }
+});
 createForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   console.log(e);
   let category = e.srcElement[0].value;
-  let image = e.srcElement[1];
-  let title = e.srcElement[2].value;
-  let description = e.srcElement[3].value;
-  let price = e.srcElement[4].value;
+  let condition = document.querySelector("input[name='condition']:checked")
+    .value;
+  let image = e.srcElement[3];
+  let title = e.srcElement[4].value;
+  let description = e.srcElement[5].value;
+  let price = e.srcElement[6].value;
+  let btn = e.srcElement[7];
+
+  let numRegex = /^\d+$/;
+
+  console.log(userName, userPic, uid);
   if (
     !category ||
     image.files.length === 0 ||
     !title ||
     !description ||
-    !price
+    !price ||
+    !condition
   ) {
-    alert("all the field are required");
+    return alert("all the field are required");
   }
+  if (!numRegex.test(price)) {
+    return alert("price must be number only");
+  }
+  loader.classList.remove("none");
+  btn.classList.add("flex-class");
+  btn.setAttribute("disabled", true);
   const storageRef = ref(storage, `products/${image.files[0].name}`);
   const uploadImg = await uploadBytes(storageRef, image.files[0]);
   console.log(uploadImg);
@@ -40,24 +66,19 @@ createForm.addEventListener("submit", async (e) => {
   console.log(imgUrl);
 
   await addDoc(collection(db, `${category}`), {
+    condition,
     category,
     title,
     description,
     price,
     productImg: imgUrl,
+    createdBy: userName,
+    userPic,
+    uid,
   });
   alert("add create successfully");
-  window.location.href = "../index.html"
-});
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    uid = user.uid;
-    console.log("log in");
-    console.log(user.displayName);
-    console.log(user.photoURL);
-    console.log(uid);
-  } else {
-    console.log("logout");
-  }
+  loader.classList.add("none");
+  btn.removeAttribute("disabled");
+  btn.classList.remove("flex-class");
+  window.location.href = "../index.html";
 });
