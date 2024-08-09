@@ -93,13 +93,15 @@ const getProducts = async () => {
                 RS: ${product.price}
               </p>
               <button onclick="getSingleProduct(this)" type="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Show more specs</button>
-              <a class="${product.uid === currUserUid ? "" : "none"}" 
+              <a class="${
+                product.uid === currUserUid
+                  ? "text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                  : "none"
+              }" 
               href="./updateproduct/update.html?id=${
                 product.id
               }&category=${category}">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              Edit
-            </h5>
+              edit add
           </a>
             </div>
           </div>
