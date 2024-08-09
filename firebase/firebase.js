@@ -22,6 +22,7 @@ import {
   setDoc,
   doc,
   getDocs,
+  updateDoc,
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 import {
@@ -45,6 +46,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage();
 
 export {
   app,
@@ -70,4 +72,6 @@ export {
   ref,
   uploadBytes,
   getDownloadURL,
+  updateDoc,
+  storage,
 };
