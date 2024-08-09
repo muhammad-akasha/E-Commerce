@@ -33,6 +33,7 @@ let username = document.querySelector(".username");
 let addProductLink = document.querySelector(".link-to-add-product");
 let signInAndLogOut = document.querySelector(".sign-logout");
 let loader = document.querySelector(".loader");
+let currUserUid;
 
 const getProducts = async () => {
   loader.classList.remove("none");
@@ -53,11 +54,17 @@ const getProducts = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, category));
       querySnapshot.forEach((doc) => {
-        const { productImg, title, price, category } = doc.data();
+        const { productImg, title, price, category, uid } = doc.data();
         if (!allProducts[category]) {
           allProducts[category] = [];
         }
-        allProducts[category].push({ productImg, title, price, id: doc.id });
+        allProducts[category].push({
+          productImg,
+          title,
+          price,
+          id: doc.id,
+          uid,
+        });
       });
     } catch (error) {
       console.error(`Error fetching data for category ${category}:`, error);
@@ -71,23 +78,31 @@ const getProducts = async () => {
     productContainer.innerHTML += `<div class="category"><h1>${category}</h1></div>`;
     allProducts[category].forEach((product) => {
       productDiv.innerHTML += `
-          <div data-id="${product.id}" data-category="${category}" class="product max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <a href="#">
-              <img class="rounded-t-lg" src="${product.productImg}" alt="" />
-            </a>
+          <div data-id="${
+            product.id
+          }" data-category="${category}" class="product max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+
+              <img class="rounded-t-lg" src="${
+                product.productImg
+              }" alt="productImage" />
             <div class="p-5">
-              <a href="#">
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                   Title: ${product.title}
                 </h5>
-              </a>
               <p class="mb-3 font-bold text-gray-700 dark:text-gray-400">
                 RS: ${product.price}
               </p>
               <button onclick="getSingleProduct(this)" type="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Show more specs</button>
+              <a class="${product.uid === currUserUid ? "" : "none"}" 
+              href="./updateproduct/update.html?id=${
+                product.id
+              }&category=${category}">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              Edit
+            </h5>
+          </a>
             </div>
           </div>
-
       `;
     });
     productContainer.appendChild(productDiv);
@@ -101,6 +116,7 @@ const getProducts = async () => {
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
+    currUserUid = user.uid;
     profileDetail.classList.remove("none");
     addProductLink.classList.remove("disabled-link");
     signInAndLogOut.classList.add("logout");
