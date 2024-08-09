@@ -6,13 +6,12 @@ import {
   onAuthStateChanged,
   uploadBytes,
   getDownloadURL,
-  getStorage,
+  storage,
   ref,
 } from "../firebase/firebase.js";
 
 let createForm = document.getElementById("create-form");
 let loader = document.querySelector(".spin");
-const storage = getStorage();
 
 let uid;
 let userName;

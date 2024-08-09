@@ -44,3 +44,6 @@ body {
   border-radius: 6px;
   padding: 7px 12px;
 }
+.none {
+  display: none;
+}
