@@ -12,8 +12,8 @@
     align-items: center;
     width: 100%;
   }
-  .img-div,
-  .details-div {
+
+  .product-div img {
     width: 100%;
   }
   .product-container {
